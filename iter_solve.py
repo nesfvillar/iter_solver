@@ -1,5 +1,3 @@
-#!/opt/python/bin/python
-
 def jacobi(unknowns, functions, max_iter = 500, tolerance = 0.001):
     if len(unknowns) != len(functions):
         raise ValueError('Number of variables is not the same as number of functions')
