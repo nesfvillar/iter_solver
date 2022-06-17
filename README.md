@@ -30,6 +30,6 @@ def h(args):
 guesses = [0, 0, 0]
 functions = [f, g, h]
 
-solutions = gauss_seidel(guesses, functions)
+solutions = is.gauss_seidel(guesses, functions)
 print(solutions)
 ```
