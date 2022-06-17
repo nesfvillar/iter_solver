@@ -35,25 +35,23 @@ def gauss_seidel(unknowns, functions, max_iter = 500, tolerance = 0.001):
 
     return solution
 
-
-def f(args):
-    x, y, z = args
-    return (10 - y - 2 * z) / 7
-
-
-def g(args):
-    x, y, z = args
-    return (8 - x - 3 * z) / 8
-
-
-def h(args):
-    x, y, z = args
-    return (6 - 2 * x - 3 * y) / 9
-
-
 def main():
+    def f(args):
+        x, y, z = args
+        return (10 - y - 2 * z) / 7
+
+    def g(args):
+        x, y, z = args
+        return (8 - x - 3 * z) / 8
+
+
+    def h(args):
+        x, y, z = args
+        return (6 - 2 * x - 3 * y) / 9
+
     unknowns = [0, 0, 0]
     functions = [f, g, h]
+    tolerance = 1e-9
 
     solution = jacobi(unknowns, functions, tolerance=tolerance)
     print(solution)
