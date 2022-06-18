@@ -8,30 +8,31 @@ def jacobi(unknowns, functions, max_iter = 500, tolerance = 0.001):
 
         exit = [abs(current - previous) < tolerance for current, previous in zip(solution, prev_solution)]
         if all(exit):
-            print(f'Jacobi: exiting at loop {i}')
             return solution
         else:
             prev_solution = solution
 
-    return solution
+    raise ValueError(f'The solution did not converge after {max_iter} iterations for tolerance {tolerance}')
 
 
 def gauss_seidel(unknowns, functions, max_iter = 500, tolerance = 0.001):
     if len(unknowns) != len(functions):
         raise ValueError('Number of variables is not the same as number of functions')
 
-    solution = prev_solution = unknowns
+    solution = unknowns
+    prev_solution = solution.copy()
     for i in range(max_iter):
-        solution = [function(solution) for function in functions]
+        for j, function in enumerate(functions):
+            solution[j] = function(solution)
 
         exit = [abs(current - previous) < tolerance for current, previous in zip(solution, prev_solution)]
         if all(exit):
-            print(f'Gauss-Seidel: exiting at loop {i}')
             return solution
         else:
-            prev_solution = solution
+            prev_solution = solution.copy()
 
-    return solution
+    raise ValueError(f'The solution did not converge after {max_iter} iterations for tolerance {tolerance}')
+
 
 def main():
     def f(args):
