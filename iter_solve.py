@@ -1,6 +1,6 @@
 def jacobi(unknowns, functions, max_iter = 500, tolerance = 0.001):
     if len(unknowns) != len(functions):
-        raise ValueError('Number of variables is not the same as number of functions')
+        raise AssertionError('Number of variables is not the same as number of functions')
 
     solution = prev_solution = unknowns
     for i in range(max_iter):
@@ -17,7 +17,7 @@ def jacobi(unknowns, functions, max_iter = 500, tolerance = 0.001):
 
 def gauss_seidel(unknowns, functions, max_iter = 500, tolerance = 0.001):
     if len(unknowns) != len(functions):
-        raise ValueError('Number of variables is not the same as number of functions')
+        raise AssertionError('Number of variables is not the same as number of functions')
 
     solution = unknowns
     prev_solution = solution.copy()
