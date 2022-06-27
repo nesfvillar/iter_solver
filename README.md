@@ -8,28 +8,21 @@ The main difference between the Gauss-Seidel and Jacobi methods is that the firs
 uses the newest values of the solution on each iteration, while the Jacobi method uses
 the values of the previous loop.
 
+This branch works on matrices and vectors, so the linear algebra aspect of the iterative
+solver.
+
 # Example
 
 ```python
 import iter_solve as is
 
-def f(args):
-    x, y, z = args
-    return (10 - y - 2 * z) / 7
+matrix = [[10, 2, 3],
+          [4, 11, 6],
+          [7, 8, 90]]
+
+vector = [10, 11, 12]
 
 
-def g(args):
-    x, y, z = args
-    return (8 - x - 3 * z) / 8
-
-
-def h(args):
-    x, y, z = args
-    return (6 - 2 * x - 3 * y) / 9
-
-guesses = [0, 0, 0]
-functions = [f, g, h]
-
-solutions = is.gauss_seidel(guesses, functions)
+solutions = is.gauss_seidel(matrix, vector)
 print(solutions)
 ```
